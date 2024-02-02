@@ -2,32 +2,97 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-int main(int argc, char *argv[])
-{
+/*
+int main(int argc, char *argv[]) {
     int i;
     int split_check;
     i = 1;
     split_check = 0;
 
     if (argc < 2)
+        return 0;
+
+    char **split_result = NULL;
+
+    if (argc == 2) {
+        split_result = ft_split(argv[i], ' ');
+
+        if (split_result == NULL) {
+            printf("Memory allocation error");
+            return 1;
+        }
+
+        split_check = 1;
+    }
+
+    if (split_check == 1)
+        i--;
+
+    while (split_result != NULL && split_result[i] != NULL) {
+        if (!ft_atoi(split_result[i])) {
+            printf("Error");
+            return 1;
+        } 
+
+	else {
+            printf("%s\n", split_result[i]);
+        }
+
+        i++;
+    }
+
+    // Free the memory allocated for split_result if it was assigned
+    if (split_check == 1) {
+        // Implement the function to free the memory allocated for split_result
+        // Example: free_split_result(split_result);
+    }
+
+    return 0;
+}
+*/
+
+
+int main(int argc, char *argv[])
+{
+    int		i;
+    int		split_check;
+    char**	split_res;
+    
+    i = 1;
+    split_check = 0;
+    if (argc < 2)
         return (0);
     if (argc == 2)
     {
-        argv = ft_split(argv[i], '\n');
-        split_check += 1;
+	    split_res = ft_split(argv[i], ' ');
+	    split_check += 1;
+	    i--;
     }
     if (split_check == 1)
-        i--;
-    while (i < argc)
     {
-        if (!ft_atoi(argv[i]))
-        {
-            printf("Error");
-            return (0);
-        }
-        else (printf("%s\n", argv[i]));
-        i++;
+	    while (split_res && split_res[i])
+	    {
+		    if (!ft_atoi(split_res[i]))
+		    {
+			    printf("Error");
+			    return (0);
+		    }
+		    else (printf("%s\n", split_res[i]));
+		    i++;
+	    }
+    }
+    else
+    { 
+	    while (i < argc)
+	    {
+		    if (!ft_atoi(argv[i]))
+		    {
+			    printf("Error");
+			    return (0);
+		    }
+		    else (printf("%s\n", argv[i]));
+		    i++;
+	    }
     }
     return (0);
 }
