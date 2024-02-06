@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/01 15:22:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/06 15:06:12 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include "push_swap.h"
-/*
-int	ft_isdigit(char *argv[], int i)
+
+int	is_sign(char c)
 {
-	if (argv[i] >= 48 && argv[i] <= 57)
+	if ((c == '+') || (c == '-'))
 		return (1);
 	return (0);
 }
-*/
+
+int	ft_isdigit_ps(char c)
+{		
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
+
 
 
 size_t	ft_strlen(const	char *s)
