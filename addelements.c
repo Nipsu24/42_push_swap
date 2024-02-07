@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:15:14 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/06 15:42:29 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/07 14:28:31 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,21 @@ int	main(int ac, char *av[])
 		}
 	return (0);
 }
-
+/*	j stores initial value of i in order to pass it
+	further to other functions */
 int	ft_check_input(char **av, int i)
 {
+	int j;
+
+	j = i; 
 	while (av[i])
 	{
 		if (!input_is_nbr(av[i]))
 			return (0);
 		i++;
 	}
+	if (nbr_is_dupl(av, j))
+			return (0);
 	return (1);
 }
 
@@ -86,6 +92,52 @@ int	input_is_nbr(char *av)
 	if (av[i] && !ft_isdigit_ps(av[i]))
 		return (0);
 	return (1);
+}
+
+/*	if strcmp == 0 strings are identical, 
+	therefore nbr_is_dupl is true */
+int	nbr_is_dupl(char **av, int i)
+{
+	int	j;
+
+	j = 1;
+	while (av[i])
+	{
+		j = 1;
+		while (av[j])
+		{
+			if (!ft_strcmp(av[i], av[j]) && i != j)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+    return (0);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	j = 0;
+	if (s1[i] == '+')
+    {
+        if (s2[j] != '+')
+            i++;
+    }
+	else 
+    {
+		if (s2[j] == '+')
+            j++;
+    }
+    while (s1[i] && s2[i] && s1[i] == s2[j])
+	{
+		i++;
+		j++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }
 /*
 
