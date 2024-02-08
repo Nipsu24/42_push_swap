@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/06 15:06:12 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/08 16:29:23 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "push_swap.h"
-
-int	is_sign(char c)
-{
-	if ((c == '+') || (c == '-'))
-		return (1);
-	return (0);
-}
-
-int	ft_isdigit_ps(char c)
-{		
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
-}
-
-
 
 size_t	ft_strlen(const	char *s)
 {
@@ -90,77 +74,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ptr);
 }
 
-static int	ft_subcount(char const *s, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s[i] != 0)
-	{
-		if (s[i] != 0 && s[i] != c)
-		{
-			count++;
-			while (s[i] != 0 && s[i] != c)
-				i++;
-		}
-		while (s[i] != 0 && s[i] == c)
-			i++;
-	}
-	return (count);
-}
-
-static char	**ft_free(char **result, size_t j)
-{
-	while (j > 0)
-	{
-		free(result[j - 1]);
-		j--;
-	}
-	free(result);
-	return (NULL);
-}
-
-static char	**ft_writewords(char const *s, char c, char **strings)
-{
-	size_t	start;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	start = 0;
-	while (s[i] != 0)
-	{
-		if (s[i] != 0 && s[i] != c)
-		{
-			start = i;
-			while (s[i] != 0 && s[i] != c)
-				i++;
-			strings[j] = ft_substr(s, start, (i - start));
-			if (strings[j] == 0)
-				return (ft_free(strings, j));
-			j++;
-		}
-		else
-			i++;
-	}
-	strings[j] = 0;
-	return (strings);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**strings;
-
-	if (!s)
-		return (0);
-	strings = (char **) malloc (sizeof(char *) * (ft_subcount(s, c) + 1));
-	if (strings == 0 || s == 0)
-		return (NULL);
-	return (ft_writewords(s, c, strings));
-}
 
 static int	ft_convertno(const char *str, int n, int minus)
 {
@@ -214,3 +127,15 @@ int	ft_atoi(const char *str)
 		return (-number);
 	return (number);
 }
+/*
+int	arg_is_zero(char *av, int i)
+{
+	while (av[i] && av[i] == '0')
+	{
+		if (av[i] != '\0')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+*/
