@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:15:14 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/08 16:39:08 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:36:05 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 /*	j stores initial value of i in order to pass it
 	further to other functions */
 int	ft_check_input(char **av, int i)
 {
-	int j;
+	int	j;
 
 	j = i;
 	while (av[i])
@@ -30,6 +29,6 @@ int	ft_check_input(char **av, int i)
 		i++;
 	}
 	if (nbr_is_dupl(av, j))
-			return (0);
+		return (0);
 	return (1);
 }

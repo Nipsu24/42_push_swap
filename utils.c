@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/08 16:29:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:34:19 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
@@ -74,7 +73,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ptr);
 }
 
-
 static int	ft_convertno(const char *str, int n, int minus)
 {
 	long int	number;
@@ -99,12 +97,12 @@ static int	ft_convertno(const char *str, int n, int minus)
 	return (number);
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atol(const char *str)
 {
-	int	i;
-	int	minus;
-	int	number;
-	int	plus;
+	int			i;
+	int			minus;
+	long int	number;
+	int			plus;
 
 	minus = 0;
 	plus = 0;
@@ -127,15 +125,3 @@ int	ft_atoi(const char *str)
 		return (-number);
 	return (number);
 }
-/*
-int	arg_is_zero(char *av, int i)
-{
-	while (av[i] && av[i] == '0')
-	{
-		if (av[i] != '\0')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-*/

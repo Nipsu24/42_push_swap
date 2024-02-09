@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:30:44 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/08 16:41:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:32:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	input_is_nbr(char *av)
 }
 
 /*	if strcmp == 0 strings are identical, 
-	therefore nbr_is_dupl is true */
+	therefore nbr_is_dupl is true.
+	ft_atol used for ruling out e.g. 000x duplicates */
 int	nbr_is_dupl(char **av, int i)
 {
 	int	j;
@@ -52,36 +53,11 @@ int	nbr_is_dupl(char **av, int i)
 		j = 1;
 		while (av[j])
 		{
-			if (!ft_strcmp_ps(av[i], av[j]) && i != j)
+			if (ft_atol(av[i]) == ft_atol(av[j]) && i != j)
 				return (1);
 			j++;
 		}
 		i++;
 	}
 	return (0);
-}
-
-int	ft_strcmp_ps(const char *s1, const char *s2)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (s1[i] == '+')
-	{
-		if (s2[j] != '+')
-			i++;
-	}
-	else
-	{
-		if (s2[j] == '+')
-			j++;
-	}
-	while (s1[i] && s2[i] && s1[i] == s2[j])
-	{
-		i++;
-		j++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }
