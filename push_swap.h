@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/13 14:54:51 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:46:58 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void		rotate_a(t_list **lst_a);
 void		rotate_b(t_list **lst_b);
 void		rotate_ab(t_list **lst_a, t_list **lst_b);
 void		rev_rotate_a(t_list **lst_a);
+void		rev_rotate_b(t_list **lst_b);
 
 #endif
