@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/12 15:13:07 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/13 14:54:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,18 @@ typedef struct s_list
 {
 	int long		content;
 	struct s_list	*next;
-	struct s_list	*prev;
 }	t_list;
 
 void		ft_lstadd_back(t_list **lst, t_list *new);
+t_list		*ft_lstlast(t_list *lst);
 void		swap_a(t_list **lst);
 void		swap_b(t_list **lst);
 void		swap_ab(t_list **lst_a, t_list **lst_b);
+void		push_a(t_list **lst_a, t_list **lst_b);
+void		push_b(t_list **lst_a, t_list **lst_b);
+void		rotate_a(t_list **lst_a);
+void		rotate_b(t_list **lst_b);
+void		rotate_ab(t_list **lst_a, t_list **lst_b);
+void		rev_rotate_a(t_list **lst_a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:14:43 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/12 16:26:28 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/13 14:32:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	push_a(t_list **lst_a, t_list **lst_b)
 		return ;
 	current_b = *lst_b;
 	current_a = *lst_a;
-	current_a->prev = current_b;
 	*lst_b = current_b->next;
 	current_b->next = current_a;
 	*lst_a = current_b;
@@ -38,12 +37,12 @@ void	push_b(t_list **lst_a, t_list **lst_b)
 		return ;
 	current_a = *lst_a;
 	current_b = *lst_b;
-	current_b->prev = current_a;
 	*lst_a = current_a->next;
 	current_a->next = current_b;
 	*lst_b = current_a;
 	ft_putstr("pb\n");
 }
+
 
 int	main(void)
 {
@@ -75,21 +74,21 @@ int	main(void)
 		ft_lstadd_back(&root_b, stack_b);
 		j++;
     }
-    printf("%s\n", "before swap_ab a:");
+    printf("%s\n", "before push a:");
     t_list *current_a = root_a;
     while (current_a != NULL)
     {
         printf("%ld\n", current_a->content);
         current_a = current_a->next;
     }
-    printf("%s\n", "before swap_ab b:");
+    printf("%s\n", "before push b:");
     t_list *current_b = root_b;
     while (current_b != NULL)
     {
         printf("%ld\n", current_b->content);
         current_b = current_b->next;
     }
-    printf("%s\n", "after swap_ab a:");
+    printf("%s\n", "after push a:");
     push_b(&root_a, &root_b);
     t_list *current_a2 = root_a;
     while (current_a2 != NULL)
@@ -97,7 +96,7 @@ int	main(void)
         printf("%ld\n", current_a2->content);
         current_a2 = current_a2->next;
     }
-    printf("%s\n", "after swap_ab b:");
+    printf("%s\n", "after push b:");
     /*swap_ab(&root_a, &root_b);*/
     t_list *current_b2 = root_b;
     while (current_b2 != NULL)

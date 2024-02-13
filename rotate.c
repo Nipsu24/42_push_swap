@@ -1,88 +1,81 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 16:13:05 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/13 14:08:56 by mmeier           ###   ########.fr       */
+/*   Created: 2024/02/12 16:34:33 by mmeier            #+#    #+#             */
+/*   Updated: 2024/02/13 14:54:53 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
+#include <stdio.h>
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*temp;
-
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
+	while (lst)
 	{
-		*lst = new;
-		return ;
+		if (!lst -> next)
+			return (lst);
+		lst = lst -> next;
 	}
-	temp = *lst;
-	while (temp -> next)
-		temp = temp -> next;
-	temp -> next = new;
+	return (lst);
 }
 
-void	swap_a(t_list **lst)
+void	rotate_a(t_list **lst_a)
 {
-	t_list	*temp;
+	t_list	*last;
+	t_list	*current;
+	
+	if (!lst_a || !*lst_a || !(*lst_a)->next)
+		return ;
+	current = *lst_a;
+	last = ft_lstlast(*lst_a);
+	*lst_a = current->next;
+	last->next = current;
+	current->next = NULL;
+	ft_putstr("ra\n");
+}
+
+void	rotate_b(t_list **lst_b)
+{
+	t_list	*last;
 	t_list	*current;
 
-	if (!lst || !*lst || !(*lst)->next) // Check if list is empty or has only one node
+	if (!lst_b || !*lst_b || !(*lst_b)->next)
 		return ;
-	current = *lst;
-	temp = current->next; // points to 2nd node of list
-	current->next = temp->next; // current next points now to 3rd node (the one initially temp->next has pointed)
-	temp->next = current; //switches temp to 1st position
-	*lst = temp; // Update the head of the list
-	ft_putstr("sa\n");
+	current = *lst_b;
+	last = ft_lstlast(*lst_b);
+	*lst_b = current->next;
+	last->next = current;
+	current->next = NULL;
+	ft_putstr("rb\n");
 }
 
-
-void	swap_b(t_list **lst)
+void	rotate_ab(t_list **lst_a, t_list **lst_b)
 {
-	t_list	*temp;
-	t_list	*current;
-
-	if (!lst || !*lst || !(*lst)->next) // Check if list is empty or has only one node
-		return ;
-	current = *lst;
-	temp = current->next; // points to 2nd node of list
-	current->next = temp->next; // current next points now to 3rd node (the one initially temp->next has pointed)
-	temp->next = current; //switches temp to 1st position
-	*lst = temp; // Update the head of the list
-	ft_putstr("sb\n");
-}
-
-void	swap_ab(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*temp_a;
+	t_list	*last_a;
 	t_list	*current_a;
-	t_list	*temp_b;
+	t_list	*last_b;
 	t_list	*current_b;
 
-	if (!lst_a || !*lst_a || !(*lst_a)->next || !lst_b || !*lst_b || !(*lst_b)->next)
-		return ;
 	current_a = *lst_a;
-	temp_a = current_a->next; // points to 2nd node of list
-	current_a->next = temp_a->next; // current next points now to 3rd node (the one initially temp->next has pointed)
-	temp_a->next = current_a; //switches temp to 1st position
-	*lst_a = temp_a; // Update the head of the list
+	last_a = ft_lstlast(*lst_a);
+	*lst_a = current_a->next;
+	last_a->next = current_a;
+	current_a->next = NULL;
 	current_b = *lst_b;
-	temp_b = current_b->next; // points to 2nd node of list
-	current_b->next = temp_b->next; // current next points now to 3rd node (the one initially temp->next has pointed)
-	temp_b->next = current_b; //switches temp to 1st position
-	*lst_b = temp_b; // Update the head of the list
-	ft_putstr("ss\n");
+	last_b = ft_lstlast(*lst_b);
+	*lst_b = current_b->next;
+	last_b->next = current_b;
+	current_b->next = NULL;
+	ft_putstr("rr\n");
 }
-/*
+
+//for testing double commands
+
 int	main(void)
 {
     int i;
@@ -128,7 +121,7 @@ int	main(void)
         current_b = current_b->next;
     }
     printf("%s\n", "after swap_ab a:");
-    swap_ab(&root_a, &root_b);
+    rotate_ab(&root_a, &root_b);
     t_list *current_a2 = root_a;
     while (current_a2 != NULL)
     {
@@ -136,7 +129,6 @@ int	main(void)
         current_a2 = current_a2->next;
     }
     printf("%s\n", "after swap_ab b:");
-    //swap_ab(&root_a, &root_b);
     t_list *current_b2 = root_b;
     while (current_b2 != NULL)
     {
@@ -145,20 +137,16 @@ int	main(void)
     }
     return (0);
 }
-*/
 
 
+//for testing single commands
+
+/*
 int	main(void)
 {
     int i;
     i = 1;
-    
     t_list *root = NULL;
-   /* if (ac < 2)
-	{
-		printf("%s\n", av[0]);
-		return (0);
-	}*/
     while (i < 5)
 	{
         t_list *stack_a = malloc(sizeof(t_list));
@@ -169,15 +157,15 @@ int	main(void)
 		ft_lstadd_back(&root, stack_a);
 		i++;
     }
-    printf("%s\n", "before swap_a:");
+    printf("%s\n", "before rotate_a:");
     t_list *current = root;
     while (current != NULL)
     {
         printf("%ld\n", current->content);
         current = current->next;
     }
-    printf("%s\n", "after swap_a:");
-    swap_a(&root);
+    printf("%s\n", "after rotate_a:");
+    rotate_a(&root);
     t_list *current2 = root;
     while (current2 != NULL)
     {
@@ -186,4 +174,21 @@ int	main(void)
     }
     return (0);
 }
+*/
 
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*temp;
+
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	temp = *lst;
+	while (temp -> next)
+		temp = temp -> next;
+	temp -> next = new;
+}
