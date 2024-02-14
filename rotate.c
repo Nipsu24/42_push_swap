@@ -6,23 +6,12 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:34:33 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/13 14:54:53 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:48:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst)
-	{
-		if (!lst -> next)
-			return (lst);
-		lst = lst -> next;
-	}
-	return (lst);
-}
 
 void	rotate_a(t_list **lst_a)
 {
@@ -75,7 +64,7 @@ void	rotate_ab(t_list **lst_a, t_list **lst_b)
 }
 
 //for testing double commands
-
+/*
 int	main(void)
 {
     int i;
@@ -141,7 +130,7 @@ int	main(void)
 
 //for testing single commands
 
-/*
+
 int	main(void)
 {
     int i;
@@ -175,20 +164,3 @@ int	main(void)
     return (0);
 }
 */
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*temp;
-
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		return ;
-	}
-	temp = *lst;
-	while (temp -> next)
-		temp = temp -> next;
-	temp -> next = new;
-}

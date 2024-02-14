@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/12 14:43:25 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:47:39 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,32 @@ void	ft_putstr(char *s)
 		write(1, &s[i], 1);
 		i++;
 	}
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*temp;
+
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	temp = *lst;
+	while (temp -> next)
+		temp = temp -> next;
+	temp -> next = new;
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst)
+	{
+		if (!lst -> next)
+			return (lst);
+		lst = lst -> next;
+	}
+	return (lst);
 }

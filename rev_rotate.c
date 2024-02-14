@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:06:12 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/14 11:50:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:49:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	rev_rotate_ab(t_list **lst_a, t_list **lst_b)
 	current_b->next = NULL;
 	ft_putstr("rrr\n");
 }
-
+/*
 int	main(void)
 {
     int i;
@@ -134,7 +134,7 @@ int	main(void)
     }
     return (0);
 }
-
+*/
 
 
 /*
@@ -171,30 +171,3 @@ int	main(void)
     return (0);
 }
 */
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*temp;
-
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		return ;
-	}
-	temp = *lst;
-	while (temp -> next)
-		temp = temp -> next;
-	temp -> next = new;
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst)
-	{
-		if (!lst -> next)
-			return (lst);
-		lst = lst -> next;
-	}
-	return (lst);
-}
