@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/14 16:57:50 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/15 14:22:19 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void		rev_rotate_ab(t_list **lst_a, t_list **lst_b);
 int		lst_len(t_list *lst);
 void		prep_to_sort(t_list **lst_a, t_list **lst_b);
 void		sort_two(t_list **lst_a);
+void		sort_three(t_list **lst_a);
+void		sort_four(t_list **lst_a, t_list **lst_b);
 
 #endif

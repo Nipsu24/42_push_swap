@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/14 16:47:39 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:03:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,4 +166,17 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst -> next;
 	}
 	return (lst);
+}
+
+int	lst_len(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

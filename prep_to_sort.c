@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/14 16:57:13 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/15 15:47:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,78 @@ void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 {
 	if (lst_len(*lst_a) == 2)
 		sort_two(lst_a);
+	if (lst_len(*lst_a) == 3)
+		sort_three(lst_a);
+	if (lst_len(*lst_a) == 4)
+		sort_four(lst_a, lst_b);
+	return ;
+}
+/*
+void	sort_four(t_list **lst_a, t_list **lst_b)
+{
+    t_list *current = *lst_a;
+    t_list *smallest = current;
+    t_list *second_smallest = NULL;
+
+    // Find the smallest element in lst_a
+    while (current)
+    {
+        if (current->content < smallest->content)
+            smallest = current;
+        current = current->next;
+    }
+
+    current = *lst_a;
+
+    // Find the second smallest element in lst_a (excluding the smallest one)
+    while (current)
+    {
+        if (current != smallest && (second_smallest == NULL || current->content < second_smallest->content))
+            second_smallest = current;
+        current = current->next;
+    }
+
+    // Push the two smallest elements from lst_a to lst_b
+    push_b(lst_a, lst_b);
+    push_b(lst_a, lst_b);
+
+    // Sort the remaining two elements in lst_a
+    sort_two(lst_a);
+
+    // Push the two elements from lst_b back to lst_a in the correct order
+    while (*lst_b)
+        push_a(lst_a, lst_b);
+}
+*/
+
+
+
+
+void	sort_four(t_list **lst_a, t_list **lst_b)
+{
+	int	i;
+	t_list	*current_a;
+	t_list	*current_b;
+
+	i = 0;
+	current_a = *lst_a;
+	current_b = *lst_b;
+	push_b(lst_a, lst_b);
+	sort_three(lst_a);
+	current_a = *lst_a;
+	current_b = *lst_b;
+	while (current_a->content < current_b->content)
+	{
+		rotate_a(lst_a);
+		i++;
+		current_a = *lst_a;
+	}
+	push_a(lst_a, lst_b);
+	while (i > 0)
+	{
+		rev_rotate_a(lst_a);
+		i--;
+	}
 	return ;
 }
 
@@ -32,77 +104,66 @@ void	sort_two(t_list **lst_a)
 	return ;
 }
 
-int	lst_len(t_list *lst)
+void	sort_three(t_list **lst_a)
+{
+	t_list	*cur;
+	t_list	*end;
+	t_list	*mid;
+
+	cur = *lst_a;
+	end = ft_lstlast(*lst_a);
+	mid = cur->next;
+	if (cur->content < mid->content && mid->content < end->content)
+		return ;
+	if (cur->content > mid->content && mid->content > end->content)
+	{
+		rotate_a(lst_a);
+		swap_a(lst_a);
+	}
+	if (cur->content < mid->content && mid->content > end->content && cur->content < end->content)
+	{
+		rev_rotate_a(lst_a);
+		swap_a(lst_a);
+	}
+	if (cur->content < mid->content && mid->content > end->content && cur->content > end->content)
+		rev_rotate_a(lst_a);
+	if (cur->content > mid->content && mid->content < end->content && cur->content > end->content)
+		rotate_a(lst_a);
+	if (cur->content > mid->content && mid->content < end->content && cur->content < end->content)
+		swap_a(lst_a);
+}
+
+int	main(int ac, char *av[])
 {
 	int	i;
 
-	i = 0;
-	while (lst)
+	i = 1;
+	t_list *root = NULL;
+	t_list *root_b = NULL;
+	while (ac > i)
 	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);		
-}
-
-int	main(void)
-{
-    int i;
-    int j;
-    i = 2;
-    j = 5;
-
-    t_list *root_a = NULL;
-    t_list *root_b = NULL;
-
-    while (i > 0)
-	{
-        t_list *stack_a = malloc(sizeof(t_list));
+		t_list *stack_a = malloc(sizeof(t_list));
 		if (!stack_a)
 			return (0);
-		stack_a->content = i;
-        stack_a->next = NULL;
-		ft_lstadd_back(&root_a, stack_a);
-		i--;
-    }
-    while (j < 10)
-	{
-        t_list *stack_b = malloc(sizeof(t_list));
-		if (!stack_b)
-			return (0);
-		stack_b->content = j;
-        stack_b->next = NULL;
-		ft_lstadd_back(&root_b, stack_b);
-		j++;
-    }
-    printf("%s\n", "before swap_ab a:");
-    t_list *current_a = root_a;
-    while (current_a != NULL)
+		stack_a->content = ft_atol(av[i]);
+		stack_a->next = NULL;
+		ft_lstadd_back(&root, stack_a);
+		i++;
+	}
+    printf("%s\n", "before sorting:");
+    t_list *current = root;
+    while (current != NULL)
     {
-        printf("%ld\n", current_a->content);
-        current_a = current_a->next;
+        printf("%ld\n", current->content);
+        current = current->next;
     }
-    printf("%s\n", "before swap_ab b:");
-    t_list *current_b = root_b;
-    while (current_b != NULL)
+    printf("%s\n", "after sorting:");
+    prep_to_sort(&root, &root_b);
+    t_list *current2 = root;
+    while (current2 != NULL)
     {
-        printf("%ld\n", current_b->content);
-        current_b = current_b->next;
-    }
-    printf("%s\n", "after swap_ab a:");
-    prep_to_sort(&root_a, &root_b);
-    t_list *current_a2 = root_a;
-    while (current_a2 != NULL)
-    {
-        printf("%ld\n", current_a2->content);
-        current_a2 = current_a2->next;
-    }
-    printf("%s\n", "after swap_ab b:");
-    t_list *current_b2 = root_b;
-    while (current_b2 != NULL)
-    {
-        printf("%ld\n", current_b2->content);
-        current_b2 = current_b2->next;
+        printf("%ld\n", current2->content);
+        current2 = current2->next;
     }
     return (0);
-}	
+}

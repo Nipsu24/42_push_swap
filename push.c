@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:14:43 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/14 16:45:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/15 14:31:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	main(void)
         current_a2 = current_a2->next;
     }
     printf("%s\n", "after push b:");
-    /*swap_ab(&root_a, &root_b);*/
     t_list *current_b2 = root_b;
     while (current_b2 != NULL)
     {
