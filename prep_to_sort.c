@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/15 15:47:15 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/15 16:26:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,46 +23,6 @@ void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 		sort_four(lst_a, lst_b);
 	return ;
 }
-/*
-void	sort_four(t_list **lst_a, t_list **lst_b)
-{
-    t_list *current = *lst_a;
-    t_list *smallest = current;
-    t_list *second_smallest = NULL;
-
-    // Find the smallest element in lst_a
-    while (current)
-    {
-        if (current->content < smallest->content)
-            smallest = current;
-        current = current->next;
-    }
-
-    current = *lst_a;
-
-    // Find the second smallest element in lst_a (excluding the smallest one)
-    while (current)
-    {
-        if (current != smallest && (second_smallest == NULL || current->content < second_smallest->content))
-            second_smallest = current;
-        current = current->next;
-    }
-
-    // Push the two smallest elements from lst_a to lst_b
-    push_b(lst_a, lst_b);
-    push_b(lst_a, lst_b);
-
-    // Sort the remaining two elements in lst_a
-    sort_two(lst_a);
-
-    // Push the two elements from lst_b back to lst_a in the correct order
-    while (*lst_b)
-        push_a(lst_a, lst_b);
-}
-*/
-
-
-
 
 void	sort_four(t_list **lst_a, t_list **lst_b)
 {
