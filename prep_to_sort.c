@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/15 16:26:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/16 14:22:16 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 
 void	sort_four(t_list **lst_a, t_list **lst_b)
 {
-	int	i;
+	int		i;
 	t_list	*current_a;
 	t_list	*current_b;
 
@@ -66,32 +66,63 @@ void	sort_two(t_list **lst_a)
 
 void	sort_three(t_list **lst_a)
 {
-	t_list	*cur;
-	t_list	*end;
-	t_list	*mid;
+	t_list	*high;
+	t_list	*low;
+	t_list	*last;
+	t_list	*first;
 
-	cur = *lst_a;
-	end = ft_lstlast(*lst_a);
-	mid = cur->next;
-	if (cur->content < mid->content && mid->content < end->content)
-		return ;
-	if (cur->content > mid->content && mid->content > end->content)
+	high = highest(*lst_a);
+	low = lowest(*lst_a);
+	last = ft_lstlast(*lst_a);
+	first = *lst_a;
+	if (high == *lst_a && low == last)
 	{
 		rotate_a(lst_a);
 		swap_a(lst_a);
 	}
-	if (cur->content < mid->content && mid->content > end->content && cur->content < end->content)
+	if (low == *lst_a && low->next == high)
 	{
 		rev_rotate_a(lst_a);
 		swap_a(lst_a);
 	}
-	if (cur->content < mid->content && mid->content > end->content && cur->content > end->content)
+	if ((*lst_a)->next == high && low == last)
 		rev_rotate_a(lst_a);
-	if (cur->content > mid->content && mid->content < end->content && cur->content > end->content)
+	if ((*lst_a) == high && (*lst_a)->next == low)
 		rotate_a(lst_a);
-	if (cur->content > mid->content && mid->content < end->content && cur->content < end->content)
+	if ((*lst_a)->next == low && last == high)
 		swap_a(lst_a);
 }
+
+
+
+// void	sort_three(t_list **lst_a)
+// {
+// 	t_list	*cur;
+// 	t_list	*end;
+// 	t_list	*mid;
+
+// 	cur = *lst_a;
+// 	end = ft_lstlast(*lst_a);
+// 	mid = cur->next;
+// 	if (cur->content < mid->content && mid->content < end->content)
+// 		return ;
+// 	if (cur->content > mid->content && mid->content > end->content)
+// 	{
+// 		rotate_a(lst_a);
+// 		swap_a(lst_a);
+// 	}
+// 	if (cur->content < mid->content && mid->content > end->content && cur->content < end->content)
+// 	{
+// 		rev_rotate_a(lst_a);
+// 		swap_a(lst_a);
+// 	}
+// 	if (cur->content < mid->content && mid->content > end->content && cur->content > end->content)
+// 		rev_rotate_a(lst_a);
+// 	if (cur->content > mid->content && mid->content < end->content && cur->content > end->content)
+// 		rotate_a(lst_a);
+// 	if (cur->content > mid->content && mid->content < end->content && cur->content < end->content)
+// 		swap_a(lst_a);
+// }
 
 int	main(int ac, char *av[])
 {
