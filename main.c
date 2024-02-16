@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/09 15:16:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/16 13:52:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	main(int ac, char *av[])
         printf("%ld\n", current->content);
         current = current->next;
     }
+	if (is_sorted(root))
+		return ;  /////to be updated still!!
 	/*
     current = root;
     while (current != NULL)

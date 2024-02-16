@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/16 13:45:29 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/16 14:58:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			lst_len(t_list *lst);
 void		prep_to_sort(t_list **lst_a, t_list **lst_b);
 void		sort_two(t_list **lst_a);
 void		sort_three(t_list **lst_a);
-void		sort_four(t_list **lst_a, t_list **lst_b);
+void		sort_five(t_list **lst_a, t_list **lst_b);
 int			is_sorted(t_list *lst);
 t_list		*lowest(t_list *lst);
 t_list		*highest(t_list *lst);

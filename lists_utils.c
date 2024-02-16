@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:17:56 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/16 13:38:45 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/16 14:26:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,38 +64,38 @@ int	is_sorted(t_list *lst)
 	return (1);
 }
 
-int	main(int ac, char *av[])
-{
-	int	i;
+// int	main(int ac, char *av[])
+// {
+// 	int	i;
 
-	i = 1;
-	t_list *root = NULL;
-	while (ac > i)
-	{
-		t_list *stack_a = malloc(sizeof(t_list));
-		if (!stack_a)
-			return (0);
-		stack_a->content = ft_atol(av[i]);
-		stack_a->next = NULL;
-		ft_lstadd_back(&root, stack_a);
-		i++;
-	}
-    printf("%s\n", "before sorting:");
-    //t_list *current = root;
-    // while (current != NULL)
-    // {
-    //     printf("%ld\n", current->content);
-    //     current = current->next;
-    // }
-    printf("%s\n", "is sorted:");
-    //printf("%d\n", is_sorted(root));
-		// printf("%s\n", "is highest:");	/////testing highest////
-    	// t_list *current = highest(root);
-        // printf("%ld\n", current->content);
-	printf("%s\n", "is lowest:");	/////testing lowest////
-    t_list *current = lowest(root);
-    printf("%ld\n", current->content);
-    return (0);
-}
+// 	i = 1;
+// 	t_list *root = NULL;
+// 	while (ac > i)
+// 	{
+// 		t_list *stack_a = malloc(sizeof(t_list));
+// 		if (!stack_a)
+// 			return (0);
+// 		stack_a->content = ft_atol(av[i]);
+// 		stack_a->next = NULL;
+// 		ft_lstadd_back(&root, stack_a);
+// 		i++;
+// 	}
+//     printf("%s\n", "before sorting:");
+//     //t_list *current = root;
+//     // while (current != NULL)
+//     // {
+//     //     printf("%ld\n", current->content);
+//     //     current = current->next;
+//     // }
+//     printf("%s\n", "is sorted:");
+//     //printf("%d\n", is_sorted(root));
+// 		// printf("%s\n", "is highest:");	/////testing highest////
+//     	// t_list *current = highest(root);
+//         // printf("%ld\n", current->content);
+// 	printf("%s\n", "is lowest:");	/////testing lowest////
+//     t_list *current = lowest(root);
+//     printf("%ld\n", current->content);
+//     return (0);
+// }
 
 
