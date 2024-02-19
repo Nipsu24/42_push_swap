@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:30:44 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/09 15:32:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/19 14:24:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	input_is_nbr(char *av)
 	return (1);
 }
 
-/*	if strcmp == 0 strings are identical, 
-	therefore nbr_is_dupl is true.
-	ft_atol used for ruling out e.g. 000x duplicates */
+/*	ft_atol used for ruling out e.g. 000x duplicates */
 int	nbr_is_dupl(char **av, int i)
 {
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/15 12:03:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:14:09 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,44 +139,12 @@ void	ft_putstr(char *s)
 		i++;
 	}
 }
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	print_error_exit(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*temp;
-
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		return ;
-	}
-	temp = *lst;
-	while (temp -> next)
-		temp = temp -> next;
-	temp -> next = new;
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst)
-	{
-		if (!lst -> next)
-			return (lst);
-		lst = lst -> next;
-	}
-	return (lst);
-}
-
-int	lst_len(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
+	if (stack_a == NULL || *stack_a == NULL)
+		free(stack_a);
+	if (stack_b == NULL || *stack_b == NULL)
+		free(stack_b);
+	ft_putstr("Error\n");
+	exit (1);
 }

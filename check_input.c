@@ -6,14 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:15:14 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/09 15:36:05 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/19 11:55:58 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 /*	j stores initial value of i in order to pass it
 	further to other functions */

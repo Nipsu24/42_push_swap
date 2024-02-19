@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/16 14:58:34 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:13:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./libft/libft.h"
 
 long int	ft_atol(const char *str);
-char		*ft_strdup(const char *s1);
-size_t		ft_strlen(const char *s);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		**ft_split(char const *s, char c);
+//char		*ft_strdup(const char *s1);
+//size_t		ft_strlen(const char *s);
+//char		*ft_substr(char const *s, unsigned int start, size_t len);
+//char		**ft_split(char const *s, char c);
 int			ft_check_input(char **av, int i);
 int			input_is_nbr(char *av);
 int			is_sign(char c);
@@ -55,5 +56,6 @@ void		sort_five(t_list **lst_a, t_list **lst_b);
 int			is_sorted(t_list *lst);
 t_list		*lowest(t_list *lst);
 t_list		*highest(t_list *lst);
+void		print_error_exit(t_list **stack_a, t_list **stack_b);
 
 #endif
