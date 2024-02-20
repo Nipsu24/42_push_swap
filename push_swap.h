@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/19 15:13:51 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/20 14:45:01 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 long int	ft_atol(const char *str);
 //char		*ft_strdup(const char *s1);
-//size_t		ft_strlen(const char *s);
+//size_t	ft_strlen(const char *s);
 //char		*ft_substr(char const *s, unsigned int start, size_t len);
 //char		**ft_split(char const *s, char c);
 int			ft_check_input(char **av, int i);
@@ -28,6 +28,7 @@ int			is_sign(char c);
 int			ft_isdigit_ps(char c);
 int			nbr_is_dupl(char **av, int i);
 void		ft_putstr(char *s);
+int			main(int ac, char *av[]);
 
 typedef struct s_list
 {
@@ -56,6 +57,9 @@ void		sort_five(t_list **lst_a, t_list **lst_b);
 int			is_sorted(t_list *lst);
 t_list		*lowest(t_list *lst);
 t_list		*highest(t_list *lst);
-void		print_error_exit(t_list **stack_a, t_list **stack_b);
+void		print_error_exit(void);
+t_list		*fill_stack_a(char **av, int i, t_list **stack_a);
+int			free_stacks(t_list **stack_a, t_list **stack_b);
+t_list		*fill_stack_b(t_list **stack_b);
 
 #endif

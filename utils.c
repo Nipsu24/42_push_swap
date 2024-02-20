@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/19 15:14:09 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/20 13:33:56 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,63 @@
 #include <string.h>
 #include "push_swap.h"
 
-size_t	ft_strlen(const	char *s)
-{
-	size_t	i;
+// size_t	ft_strlen(const	char *s)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (s[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 
-char	*ft_strdup(const char *s1)
-{
-	char	*ptr;
-	int		len;
-	int		i;
+// char	*ft_strdup(const char *s1)
+// {
+// 	char	*ptr;
+// 	int		len;
+// 	int		i;
 
-	i = 0;
-	len = ft_strlen(s1);
-	ptr = (char *) malloc ((len + 1) * sizeof(char));
-	if (ptr == 0)
-		return (NULL);
-	while (i < len)
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	ptr[len] = '\0';
-	return (ptr);
-}
+// 	i = 0;
+// 	len = ft_strlen(s1);
+// 	ptr = (char *) malloc ((len + 1) * sizeof(char));
+// 	if (ptr == 0)
+// 		return (NULL);
+// 	while (i < len)
+// 	{
+// 		ptr[i] = s1[i];
+// 		i++;
+// 	}
+// 	ptr[len] = '\0';
+// 	return (ptr);
+// }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*ptr;
-	int		i;
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char	*ptr;
+// 	int		i;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (start + len > (ft_strlen(s)))
-		len = (ft_strlen(s) - start);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	ptr = (char *) malloc ((len + 1) * sizeof(char));
-	if (ptr == 0)
-		return (NULL);
-	if (len == 0)
-		ptr[len] = '\0';
-	while (len > 0)
-	{
-		ptr[i] = s[start];
-		len--;
-		start++;
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
-}
+// 	i = 0;
+// 	if (!s)
+// 		return (0);
+// 	if (start + len > (ft_strlen(s)))
+// 		len = (ft_strlen(s) - start);
+// 	if (start >= ft_strlen(s))
+// 		return (ft_strdup(""));
+// 	ptr = (char *) malloc ((len + 1) * sizeof(char));
+// 	if (ptr == 0)
+// 		return (NULL);
+// 	if (len == 0)
+// 		ptr[len] = '\0';
+// 	while (len > 0)
+// 	{
+// 		ptr[i] = s[start];
+// 		len--;
+// 		start++;
+// 		i++;
+// 	}
+// 	ptr[i] = '\0';
+// 	return (ptr);
+// }
 
 static int	ft_convertno(const char *str, int n, int minus)
 {
@@ -139,12 +139,4 @@ void	ft_putstr(char *s)
 		i++;
 	}
 }
-void	print_error_exit(t_list **stack_a, t_list **stack_b)
-{
-	if (stack_a == NULL || *stack_a == NULL)
-		free(stack_a);
-	if (stack_b == NULL || *stack_b == NULL)
-		free(stack_b);
-	ft_putstr("Error\n");
-	exit (1);
-}
+
