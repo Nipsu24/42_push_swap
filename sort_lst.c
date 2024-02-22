@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:30:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/21 16:56:03 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/22 16:21:09 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,68 @@
 
 //void	sort_lst(t_list **lst_a, t_list **lst_b)
 
-/*sets index to each node of stack a and calculates whether
-  it's below or above the median*/
-// void	set_index(t_list *lst)
+// void	prep_list(t_list *lst_a, t_list *lst_b)
 // {
-// 	int	i;
-// 	int	len;
-
-// 	i = 0;
-// 	len = lst_len(lst);
-// 	if (!lst)
-// 		return ;
-// 	while (lst)
-// 	{
-// 		lst->index = i;
-// 		if (lst->index <= len / 2)
-// 			lst->above_median = true;
-// 		else
-// 			lst->above_median = false;
-// 		lst = lst->next;
-// 		i++;
-// 	}
+// 	set_index(lst_a);
+// 	set_index(lst_b);
+// 	set_target_node(lst_a, lst_b);
+// 	calc_push_cost(lst_a, lst_b);
+// 	find_cheapest(lst_a);
 // }
 
+//rotate and other commands to be changed to single functions -> 4 functions in total
+
+void	push_a_to_b(t_list **lst_a, t_list **lst_b)
+{
+	t_list	*cheapest;
+	t_list	*top_a;
+	t_list	*top_b;
+
+	top_a = *lst_a;
+	top_b = *lst_b;
+	cheapest = find_cheapest(lst_a);
+	if (cheapest->above_median && cheapest->target_node->above_median)
+		rotate_ab(&lst_a, &lst_b);
+	if (!(cheapest->above_median) && cheapest->target_node->above_median)
+	{
+		rev_rotate_a(&lst_a);
+		rotate_b(&lst_b);
+	}
+	if (cheapest->above_median && !(cheapest->target_node->above_median))
+	{
+		rotate_a(&lst_a);
+		rev_rotate_b(&lst_b);
+	}
+	if (!(cheapest->above_median) && !(cheapest->target_node->above_median))
+		rev_rotate_ab(&lst_a, &lst_b);
+}
+
+/*sets index to each node of stack a and calculates whether
+  it's below or above the median*/
+void	set_index(t_list *lst)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = lst_len(lst);
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		lst->index = i;
+		if (lst->index <= len / 2)
+			lst->above_median = true;
+		else
+			lst->above_median = false;
+		lst = lst->next;
+		i++;
+	}
+}
+
+/*searches for smallest closest node in lst b for nodes of lst a
+  in case no smaller node is found, target node for node a is set to 
+  highest node of b*/
 void	set_target_node(t_list *lst_a, t_list *lst_b)
 {
 	t_list	*current_b;
@@ -47,7 +86,7 @@ void	set_target_node(t_list *lst_a, t_list *lst_b)
 	while (lst_a)
 	{
 		current_b = lst_b;
-		closest_small = LONG_MIN;
+		closest_small = LONG_MIN; // INT_MIN sufficient?
 		while (current_b)
 		{
 			if (current_b->content < lst_a->content
@@ -58,14 +97,69 @@ void	set_target_node(t_list *lst_a, t_list *lst_b)
 			}
 			current_b = current_b->next;
 		}
-		if (closest_small == LONG_MIN)
+		if (closest_small == LONG_MIN) // INT_MIN sufficient?
 			lst_a->target_node = highest(lst_b);
 		else
 			lst_a->target_node = target_node;
-		printf("%ld", target_node->content);
+		//printf("%ld", lst_a->target_node->content);
 		lst_a = lst_a->next;
 	}
 }
+/* calculates push costs for lst a and b, checks for each node in each stack
+	whether it's above or below median and sets costs accordingly to index of node*/
+void	calc_push_cost(t_list *lst_a, t_list *lst_b)
+{
+	int	len_a;
+	int	len_b;
+
+	len_a = lst_len(lst_a);
+	len_b = lst_len(lst_b);
+	while (lst_a)
+	{
+		if (lst_a->above_median == true)
+			lst_a->push_cost = lst_a->index;
+		if (lst_a->above_median == false)
+			lst_a->push_cost = len_a - lst_a->index;
+		//printf("push cost: %d\n", lst_a->push_cost);
+		lst_a = lst_a->next;
+	}
+	while (lst_b)
+	{
+		if (lst_b->above_median == true)
+			lst_b->push_cost = lst_b->index;
+		if (lst_b->above_median == false)
+			lst_b->push_cost = len_b - lst_b->index;
+		//printf("push cost: %d\n", lst_b->push_cost);
+		lst_b = lst_b->next;
+	}
+}
+/*checks sum of push costs of node + target node, node with
+   smallest value is given out by temp and it's bool "cheapest" is set to true*/
+
+void	find_cheapest(t_list *lst_a)
+{
+	t_list	*cur;
+	t_list	*temp;
+	int		sum_cost_cur;
+	int		sum_cost_temp;
+
+	cur = lst_a;
+	temp = cur;
+	while (cur)
+	{
+		sum_cost_cur = cur->push_cost + cur->target_node->push_cost;
+		sum_cost_temp = temp->push_cost + temp->target_node->push_cost;
+		if (sum_cost_cur < sum_cost_temp)
+			temp = cur;
+		cur = cur->next;
+	}
+	temp->cheapest = true;
+	// printf("cheapest true: %d\n", temp->cheapest);
+	// printf("cheapest value: %ld\n", temp->content);
+	// printf("cheapest target node: %ld\n", temp->target_node->content);
+}
+
+
 int	main(void)
 {
     int i;
@@ -111,7 +205,11 @@ int	main(void)
         current_b = current_b->next;
     }
     printf("%s\n", "after set target node:");
-    set_target_node(root_a, root_b);
+    set_index(root_a);
+	set_index(root_b);
+	set_target_node(root_a, root_b);
+	calc_push_cost(root_a, root_b);
+	find_cheapest(root_a);
     // t_list *current_a2 = root_a;
     // while (current_a2 != NULL)
     // {
