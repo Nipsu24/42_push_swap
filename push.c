@@ -6,13 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:14:43 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/19 14:45:57 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/23 14:01:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
-#include "./libft/libft.h"
 
 void	push_a(t_list **lst_a, t_list **lst_b)
 {

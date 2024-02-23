@@ -6,12 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:17:56 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/19 12:02:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/21 10:13:49 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 t_list	*highest(t_list *lst)
 {

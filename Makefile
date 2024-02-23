@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 11:47:56 by mmeier            #+#    #+#              #
-#    Updated: 2024/02/20 15:41:58 by mmeier           ###   ########.fr        #
+#    Updated: 2024/02/23 14:35:47 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,17 @@ CC = cc
 FILES = check_input_utils.c \
 		check_input.c \
 		lists_utils.c \
+		prep_list_a.c \
 		prep_to_sort.c \
+		push_a_to_b.c \
+		push_b_to_a.c \
+		push_swap.c \
 		push.c \
 		rev_rotate.c \
 		rotate.c \
+		sort_lst.c \
 		swap.c \
 		utils.c \
-		push_swap.c \
 
 LIBFT = ./libft
 

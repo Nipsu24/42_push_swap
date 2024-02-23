@@ -6,12 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/20 10:08:53 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/23 16:13:17 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 {
@@ -21,6 +20,8 @@ void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 		sort_three(lst_a);
 	if (lst_len(*lst_a) > 3 && lst_len(*lst_a) < 6)
 		sort_five(lst_a, lst_b);
+	if (lst_len(*lst_a) > 5)
+		sort_lst(lst_a, lst_b);
 	return ;
 }
 
@@ -83,38 +84,3 @@ void	sort_five(t_list **lst_a, t_list **lst_b)
 	push_a(lst_a, lst_b);
 	push_a(lst_a, lst_b);
 }
-
-// int	main(int ac, char *av[])
-// {
-// 	int	i;
-
-// 	i = 1;
-// 	t_list *root = NULL;
-// 	t_list *root_b = NULL;
-// 	while (ac > i)
-// 	{
-// 		t_list *stack_a = malloc(sizeof(t_list));
-// 		if (!stack_a)
-// 			return (0);
-// 		stack_a->content = ft_atol(av[i]);
-// 		stack_a->next = NULL;
-// 		ft_lstadd_back(&root, stack_a);
-// 		i++;
-// 	}
-//     printf("%s\n", "before sorting:");
-//     t_list *current = root;
-//     while (current != NULL)
-//     {
-//         printf("%ld\n", current->content);
-//         current = current->next;
-//     }
-//     printf("%s\n", "after sorting:");
-//     prep_to_sort(&root, &root_b);
-//     t_list *current2 = root;
-//     while (current2 != NULL)
-//     {
-//         printf("%ld\n", current2->content);
-//         current2 = current2->next;
-//     }
-//     return (0);
-// }

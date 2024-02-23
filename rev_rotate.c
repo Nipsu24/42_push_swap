@@ -6,12 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:06:12 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/19 12:16:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:45:42 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	rev_rotate_a(t_list **lst_a)
 {

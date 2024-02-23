@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/20 14:44:14 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/23 15:04:48 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 
 void	print_error_exit(void)
 {
+	ft_putstr("Error\n");
+	exit (1);
+}
+
+void	print_error_free_exit(t_list **stack_a, t_list **stack_a_input)
+{
+	if (*stack_a)
+	{
+		free(*stack_a);
+		*stack_a = NULL;
+	}
+	if (*stack_a_input)
+	{
+		free(*stack_a_input);
+		*stack_a_input = NULL;
+	}
 	ft_putstr("Error\n");
 	exit (1);
 }
@@ -45,18 +61,13 @@ t_list	*fill_stack_a(char **av, int i, t_list **stack_a)
 			return (0);
 		stack_a_input->content = ft_atol(av[i]);
 		stack_a_input->next = NULL;
+		if (stack_a_input->content > INT_MAX // does not work yet
+			|| stack_a_input->content < INT_MIN)
+			print_error_free_exit(stack_a, &stack_a_input);
 		ft_lstadd_back(stack_a, stack_a_input);
 		i++;
 	}
 	return (*stack_a);
-}
-
-t_list	*fill_stack_b(t_list **stack_b)
-{
-	*stack_b = malloc(sizeof(t_list));
-	if (!*stack_b)
-		return (0);
-	return (*stack_b);
 }
 
 int	main(int ac, char *av[])
@@ -65,6 +76,8 @@ int	main(int ac, char *av[])
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	i = 1;
 	if (ac < 2)
 		return (0);
@@ -76,16 +89,16 @@ int	main(int ac, char *av[])
 	if (!ft_check_input(av, i))
 		print_error_exit();
 	stack_a = fill_stack_a(av, i, &stack_a);
-	stack_b = fill_stack_b(&stack_b);
 	if (is_sorted(stack_a))
 		return (free_stacks(&stack_a, &stack_b));
 	prep_to_sort(&stack_a, &stack_b);
-	//for printing
+	return (free_stacks(&stack_a, &stack_b));
+}
+
+//for printing
 	// t_list *current = stack_a;
     // while (current != NULL)
     // {
     //     printf("%ld\n", current->content);
     //     current = current->next;
     // }
-	return (free_stacks(&stack_a, &stack_b));
-}
