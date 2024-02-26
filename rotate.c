@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:34:33 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/23 13:45:24 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/26 10:27:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void	rotate_ab(t_list **lst_a, t_list **lst_b)
 	t_list	*last_b;
 	t_list	*current_b;
 
+	if (!lst_a || !*lst_a || !(*lst_a)->next
+		|| !lst_b || !*lst_b || !(*lst_b)->next)
+		return ;
 	current_a = *lst_a;
 	last_a = ft_lstlast(*lst_a);
 	*lst_a = current_a->next;

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/23 14:43:19 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/26 15:37:42 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include "./libft/libft.h"
+# include <stdio.h>
 
 long int	ft_atol(const char *str);
 int			ft_check_input(char **av, int i);

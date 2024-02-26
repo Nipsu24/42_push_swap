@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/23 16:13:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/26 11:28:41 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 		sort_five(lst_a, lst_b);
 	if (lst_len(*lst_a) > 5)
 		sort_lst(lst_a, lst_b);
-	return ;
 }
 
 void	sort_two(t_list **lst_a)
