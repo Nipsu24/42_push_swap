@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/23 15:04:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/26 16:04:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,3 @@ int	main(int ac, char *av[])
 	prep_to_sort(&stack_a, &stack_b);
 	return (free_stacks(&stack_a, &stack_b));
 }
-
-//for printing
-	// t_list *current = stack_a;
-    // while (current != NULL)
-    // {
-    //     printf("%ld\n", current->content);
-    //     current = current->next;
-    // }
