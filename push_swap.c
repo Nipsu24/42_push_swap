@@ -6,69 +6,78 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 16:04:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/28 16:52:07 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	print_error_exit(void)
+void	free_stack(t_list **lst)
 {
-	ft_putstr("Error\n");
-	exit (1);
-}
+	t_list	*temp;
 
-void	print_error_free_exit(t_list **stack_a, t_list **stack_a_input)
-{
-	if (*stack_a)
+	if (!(*lst) || !lst)
+		return ;
+	while (*lst)
 	{
-		free(*stack_a);
-		*stack_a = NULL;
+		temp = (*lst)->next;
+		free(*lst);
+		*lst = temp;
 	}
-	if (*stack_a_input)
-	{
-		free(*stack_a_input);
-		*stack_a_input = NULL;
-	}
-	ft_putstr("Error\n");
-	exit (1);
+	*lst = NULL;
 }
 
 int	free_stacks(t_list **stack_a, t_list **stack_b)
 {
-	if (*stack_a)
-	{
-		free(*stack_a);
-		*stack_a = NULL;
-	}
-	if (*stack_b)
-	{
-		free(*stack_b);
-		*stack_b = NULL;
-	}
+	free_stack(stack_a);
+	free_stack(stack_b);
+	return (0);
+}
+int	ft_perror(void)
+{
+	write(2, "Error\n", 6);
 	return (0);
 }
 
+
+void	perror_free_exit(t_list **stack_a, t_list **stack_b)
+{
+	free_stack(stack_a);
+	free_stack(stack_b);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+
+void	*free_stack_exit(t_list **lst)
+{
+	free_stack(lst);
+	exit (1);
+}
+
+
 t_list	*fill_stack_a(char **av, int i, t_list **stack_a)
 {
-	t_list	*stack_a_input;
+	t_list		*stack_a_input;
+	long int	nbr;
 
+	stack_a_input = NULL;
 	while (av[i])
 	{
 		stack_a_input = malloc(sizeof(t_list));
 		if (!stack_a_input)
-			return (0);
-		stack_a_input->content = ft_atol(av[i]);
+			(free_stack_exit(stack_a));
+		nbr = ft_atol(av[i]);
+		//printf("%ld\n", nbr);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			perror_free_exit(stack_a, &stack_a_input);
+		stack_a_input->content = nbr;
 		stack_a_input->next = NULL;
-		if (stack_a_input->content > INT_MAX // does not work yet
-			|| stack_a_input->content < INT_MIN)
-			print_error_free_exit(stack_a, &stack_a_input);
 		ft_lstadd_back(stack_a, stack_a_input);
 		i++;
 	}
 	return (*stack_a);
 }
+
 
 int	main(int ac, char *av[])
 {
@@ -87,7 +96,7 @@ int	main(int ac, char *av[])
 		i--;
 	}
 	if (!ft_check_input(av, i))
-		print_error_exit();
+		return (ft_perror());
 	stack_a = fill_stack_a(av, i, &stack_a);
 	if (is_sorted(stack_a))
 		return (free_stacks(&stack_a, &stack_b));

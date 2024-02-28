@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 11:28:41 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/28 15:59:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	prep_to_sort(t_list **lst_a, t_list **lst_b)
 		sort_two(lst_a);
 	if (lst_len(*lst_a) == 3)
 		sort_three(lst_a);
-	if (lst_len(*lst_a) > 3 && lst_len(*lst_a) < 6)
-		sort_five(lst_a, lst_b);
-	if (lst_len(*lst_a) > 5)
+	if (lst_len(*lst_a) > 3)
 		sort_lst(lst_a, lst_b);
 }
 
@@ -63,23 +61,4 @@ void	sort_three(t_list **lst_a)
 		rotate_a(lst_a);
 	if ((*lst_a)->next == low && last == high)
 		swap_a(lst_a);
-}
-
-void	sort_five(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*low;
-	t_list	*low_2;
-
-	low = lowest((*lst_a));
-	low_2 = NULL;
-	while (*lst_a != low)
-		rotate_a(lst_a);
-	push_b(lst_a, lst_b);
-	low_2 = lowest((*lst_a));
-	while (*lst_a != low_2)
-		rotate_a(lst_a);
-	push_b(lst_a, lst_b);
-	sort_three(lst_a);
-	push_a(lst_a, lst_b);
-	push_a(lst_a, lst_b);
 }

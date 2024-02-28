@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:21:38 by mmeier            #+#    #+#             */
-/*   Updated: 2023/12/11 10:17:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/28 16:03:50 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ static int	ft_subcount(char const *s, char c)
 		}
 		while (s[i] != 0 && s[i] == c)
 			i++;
+	}
+	if (count == 0)
+	{
+		write(2, "Error\n", 6);
+		exit (1);
 	}
 	return (count);
 }

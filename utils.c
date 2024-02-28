@@ -6,32 +6,25 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:04:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/21 10:10:06 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/02/28 15:58:31 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_convertno(const char *str, int n, int minus)
+static long	ft_convertno(const char *str, int n)
 {
 	long int	number;
-	long int	prenbr;
+	int			count;
 
-	prenbr = 0;
 	number = 0;
-	while (str[n] >= 48 && str[n] <= 57)
+	count = 0;
+	while (str[n] >= 48 && str[n] <= 57 && count < 11)
 	{
 		number *= 10;
 		number += str[n] - 48;
 		n++;
-		if (prenbr > number)
-		{
-			if (minus > 0)
-				return (0);
-			else
-				return (-1);
-		}
-		prenbr = number;
+		count++;
 	}
 	return (number);
 }
@@ -59,7 +52,7 @@ long int	ft_atol(const char *str)
 			return (0);
 		i++;
 	}
-	number = ft_convertno(str, i, minus);
+	number = ft_convertno(str, i);
 	if (minus == 1)
 		return (-number);
 	return (number);
