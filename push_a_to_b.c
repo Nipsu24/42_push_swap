@@ -6,14 +6,16 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:44:01 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 16:01:03 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:48:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//checks at first options of rotate & rev_rotate, afterwards adjust cheapest nodes in case they have
-//not been rotated to the top during these actions (or "if-conditions" did not apply to them)
+/*checks at first options of rotate & rev_rotate, 
+	afterwards adjusts cheapest nodes in case they have
+	not been rotated to the top during these actions 
+	(or "if-conditions" did not apply to them)*/
 
 void	push_a_to_b(t_list **lst_a, t_list **lst_b)
 {

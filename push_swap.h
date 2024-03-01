@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/28 11:52:44 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:18:06 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include "./libft/libft.h"
-# include <stdio.h>
 
 long int	ft_atol(const char *str);
 int			ft_check_input(char **av, int i);
@@ -31,7 +30,7 @@ int			main(int ac, char *av[]);
 
 typedef struct s_list
 {
-	int long		content;
+	int				content;
 	int				index;
 	int				push_cost;
 	bool			above_median;
@@ -79,8 +78,11 @@ void		sort_lst(t_list **lst_a, t_list **lst_b);
 t_list		*get_cheapest(t_list *lst);
 void		free_stack(t_list **lst);
 int			free_stacks(t_list **stack_a, t_list **stack_b);
-void		perror_free_exit(t_list **stack_a, t_list **stack_b);
-void		*free_stack_exit(t_list **lst);
-
+void		perror_free_exit(t_list **stack_a, t_list **stack_b,
+				int j, char **av);
+void		free_stack_exit(t_list **lst, int j, char **av);
+void		free_array(char	**av);
+int			contains_empty_string(char *av[], int size);
+int			in_range(char **av, int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:36:05 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 16:03:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:43:36 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void	set_target_node(t_list *lst_a, t_list *lst_b)
 {
 	t_list	*current_b;
 	t_list	*target_node;
-	long	closest_small;
+	int		closest_small;
 
 	while (lst_a)
 	{
 		current_b = lst_b;
-		closest_small = LONG_MIN; // INT_MIN sufficient?
+		closest_small = INT_MIN;
 		while (current_b)
 		{
 			if (current_b->content < lst_a->content
@@ -67,15 +67,16 @@ void	set_target_node(t_list *lst_a, t_list *lst_b)
 			}
 			current_b = current_b->next;
 		}
-		if (closest_small == LONG_MIN) // INT_MIN sufficient?
+		if (closest_small == INT_MIN)
 			lst_a->target_node = highest(lst_b);
 		else
 			lst_a->target_node = target_node;
 		lst_a = lst_a->next;
 	}
 }
-/* calculates push costs for lst a and b, checks for each node in each stack
-	whether it's above or below median and sets costs accordingly to index of node*/
+/* calculates push costs for lst a and b, checks for 
+	each node in each stack whether it's above or below 
+	median and sets costs accordingly to index of node*/
 
 void	calc_push_cost(t_list *lst_a, t_list *lst_b)
 {

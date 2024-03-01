@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:00:10 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 16:04:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:54:37 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	set_target_b(t_list *lst_a, t_list *lst_b)
 {
 	t_list	*current_a;
 	t_list	*target_node;
-	long	closest_big;
+	int		closest_big;
 
 	while (lst_b)
 	{
 		current_a = lst_a;
-		closest_big = LONG_MAX; // INT_MAX sufficient?
+		closest_big = INT_MAX;
 		while (current_a)
 		{
 			if (current_a->content > lst_b->content
@@ -39,17 +39,16 @@ void	set_target_b(t_list *lst_a, t_list *lst_b)
 			}
 			current_a = current_a->next;
 		}
-		if (closest_big == LONG_MAX) // INT_MAX sufficient?
+		if (closest_big == INT_MAX)
 			lst_b->target_node = lowest(lst_a);
 		else
 			lst_b->target_node = target_node;
-		//printf("%ld", lst_a->target_node->content);
 		lst_b = lst_b->next;
 	}
 }
-//sorts list "a" once more: Rotates/rev_rotates a-node/target node of b
-//as long as it's on top of list. Here in this context"target node" 
-//is "cheapest" of final_prep_push
+/*sorts list "a" once more: Rotates/rev_rotates a-node/target node of b
+	until it's on top of list. Here in this context, "target node" 
+	is "cheapest" of final_prep_push*/
 
 void	push_b_to_a(t_list **lst_a, t_list **lst_b)
 {

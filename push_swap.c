@@ -6,78 +6,40 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/28 16:52:07 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:14:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_list **lst)
-{
-	t_list	*temp;
-
-	if (!(*lst) || !lst)
-		return ;
-	while (*lst)
-	{
-		temp = (*lst)->next;
-		free(*lst);
-		*lst = temp;
-	}
-	*lst = NULL;
-}
-
-int	free_stacks(t_list **stack_a, t_list **stack_b)
-{
-	free_stack(stack_a);
-	free_stack(stack_b);
-	return (0);
-}
-int	ft_perror(void)
-{
-	write(2, "Error\n", 6);
-	return (0);
-}
-
-
-void	perror_free_exit(t_list **stack_a, t_list **stack_b)
-{
-	free_stack(stack_a);
-	free_stack(stack_b);
-	write(2, "Error\n", 6);
-	exit (1);
-}
-
-void	*free_stack_exit(t_list **lst)
-{
-	free_stack(lst);
-	exit (1);
-}
-
-
 t_list	*fill_stack_a(char **av, int i, t_list **stack_a)
 {
 	t_list		*stack_a_input;
 	long int	nbr;
+	int			j;
 
+	j = i;
 	stack_a_input = NULL;
 	while (av[i])
 	{
 		stack_a_input = malloc(sizeof(t_list));
 		if (!stack_a_input)
-			(free_stack_exit(stack_a));
+			(free_stack_exit(stack_a, j, av));
 		nbr = ft_atol(av[i]);
-		//printf("%ld\n", nbr);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			perror_free_exit(stack_a, &stack_a_input);
+			perror_free_exit(stack_a, &stack_a_input, j, av);
 		stack_a_input->content = nbr;
 		stack_a_input->next = NULL;
 		ft_lstadd_back(stack_a, stack_a_input);
 		i++;
 	}
+	if (j == 0)
+	{
+		free_array(av);
+		av = NULL;
+	}
 	return (*stack_a);
 }
-
 
 int	main(int ac, char *av[])
 {
