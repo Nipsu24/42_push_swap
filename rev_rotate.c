@@ -6,12 +6,13 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:06:12 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 10:27:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:21:37 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*line 25: to identify 2nd last element of list*/
 void	rev_rotate_a(t_list **lst_a)
 {
 	t_list	*last_a;
@@ -21,7 +22,7 @@ void	rev_rotate_a(t_list **lst_a)
 		return ;
 	last_a = ft_lstlast(*lst_a);
 	current_a = *lst_a;
-	while (current_a->next != last_a) //to identify 2nd last element of list
+	while (current_a->next != last_a)
 		current_a = current_a->next;
 	last_a->next = *lst_a;
 	*lst_a = last_a;
@@ -38,7 +39,7 @@ void	rev_rotate_b(t_list **lst_b)
 		return ;
 	last_b = ft_lstlast(*lst_b);
 	current_b = *lst_b;
-	while (current_b->next != last_b) //to identify 2nd last element of list
+	while (current_b->next != last_b)
 		current_b = current_b->next;
 	last_b->next = *lst_b;
 	*lst_b = last_b;
@@ -58,14 +59,14 @@ void	rev_rotate_ab(t_list **lst_a, t_list **lst_b)
 		return ;
 	last_a = ft_lstlast(*lst_a);
 	current_a = *lst_a;
-	while (current_a->next != last_a) //to identify 2nd last element of list
+	while (current_a->next != last_a)
 		current_a = current_a->next;
 	last_a->next = *lst_a;
 	*lst_a = last_a;
 	current_a->next = NULL;
 	last_b = ft_lstlast(*lst_b);
 	current_b = *lst_b;
-	while (current_b->next != last_b) //to identify 2nd last element of list
+	while (current_b->next != last_b)
 		current_b = current_b->next;
 	last_b->next = *lst_b;
 	*lst_b = last_b;

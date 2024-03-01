@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:13:05 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/26 10:27:12 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:28:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	swap_a(t_list **lst)
 	if (!lst || !*lst || !(*lst)->next)
 		return ;
 	current = *lst;
-	temp = current->next; // points to 2nd node of list
-	current->next = temp->next; // current next points now to 3rd node (the one initially temp->next has pointed)
-	temp->next = current; //switches temp to 1st position
-	*lst = temp; // Update the head of the list
+	temp = current->next;
+	current->next = temp->next;
+	temp->next = current;
+	*lst = temp;
 	ft_putstr("sa\n");
 }
 
