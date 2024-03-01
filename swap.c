@@ -6,11 +6,10 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:13:05 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 15:28:51 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:42:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 
 void	swap_a(t_list **lst)
