@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:30:44 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/28 16:35:42 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:39:56 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int	is_sign(char c)
 
 int	ft_isdigit_ps(char c)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
+	if (c)
+	{
+		if (c >= 48 && c <= 57)
+			return (1);
+	}
 	return (0);
 }
 

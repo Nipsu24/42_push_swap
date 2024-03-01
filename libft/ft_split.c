@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:21:38 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/28 16:03:50 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:21:00 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,25 @@ static char	**ft_free(char **result, size_t j)
 		j--;
 	}
 	free(result);
+	result = NULL;
 	return (NULL);
+}
+
+static void	contains_empty_string(char *av[], size_t j)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (av[i][0] == '\0')
+		{
+			ft_free(av, j);
+			write(2, "Error\n", 6);
+			exit (1);
+		}
+		i++;
+	}
 }
 
 static char	**ft_writewords(char const *s, char c, char **strings)
@@ -74,6 +92,7 @@ static char	**ft_writewords(char const *s, char c, char **strings)
 			i++;
 	}
 	strings[j] = 0;
+	contains_empty_string(strings, j);
 	return (strings);
 }
 

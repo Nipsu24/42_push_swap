@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:15:14 by mmeier            #+#    #+#             */
-/*   Updated: 2024/02/21 11:28:40 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:15:21 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,57 @@ int	ft_check_input(char **av, int i)
 			return (0);
 		i++;
 	}
+	if (contains_empty_string(av, j))
+		return (0);
 	if (nbr_is_dupl(av, j))
 		return (0);
+	if (!in_range(av, j))
+		return (0);
 	return (1);
+}
+
+int	check_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	in_range(char **av, int i)
+{
+	long int	num;
+
+	num = 0;
+	while (av[i] != NULL)
+	{
+		num = ft_atol(av[i]);
+		if (num > INT_MAX || num < INT_MIN)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	contains_empty_string(char *av[], int i)
+{
+	while (av[i])
+	{
+		if (av[i][0] == '\0')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_perror(void)
+{
+	write(2, "Error\n", 6);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 11:47:56 by mmeier            #+#    #+#              #
-#    Updated: 2024/02/23 14:35:47 by mmeier           ###   ########.fr        #
+#    Updated: 2024/03/01 15:27:25 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = push_swap
 CC = cc
 FILES = check_input_utils.c \
 		check_input.c \
-		lists_utils.c \
+		lists_utils_1.c \
+		lists_utils_2.c \
 		prep_list_a.c \
 		prep_to_sort.c \
 		push_a_to_b.c \
@@ -23,9 +24,9 @@ FILES = check_input_utils.c \
 		push.c \
 		rev_rotate.c \
 		rotate.c \
-		sort_lst.c \
 		swap.c \
 		utils.c \
+		free_and_exit.c
 
 LIBFT = ./libft
 
@@ -39,6 +40,9 @@ FLAGS = -Wall -Wextra -Werror
 $(NAME): $(OBJ) $(LIBFT)
 	make -C libft
 	$(CC) -o $(NAME) $(OBJ) -L$(LIBFT) -lft
+
+fsanitize: 
+	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) -lft -g -fsanitize=address -static-libsan 
 
 all: $(NAME)
 
