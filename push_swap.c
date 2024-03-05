@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 15:14:44 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/05 13:22:25 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	main(int ac, char *av[])
 	if (ac == 2)
 	{
 		av = ft_split(av[i], ' ');
+		if (av == 0)
+			return (-1);
 		i--;
 	}
 	if (!ft_check_input(av, i))

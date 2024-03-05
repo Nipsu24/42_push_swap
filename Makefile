@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 11:47:56 by mmeier            #+#    #+#              #
-#    Updated: 2024/03/01 15:27:25 by mmeier           ###   ########.fr        #
+#    Updated: 2024/03/05 13:16:09 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ FLAGS = -Wall -Wextra -Werror
 
 $(NAME): $(OBJ) $(LIBFT)
 	make -C libft
-	$(CC) -o $(NAME) $(OBJ) -L$(LIBFT) -lft
+	$(CC) $(FLAGS) -o $(NAME) $(OBJ) -L$(LIBFT) -lft
 
 fsanitize: 
 	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) -lft -g -fsanitize=address -static-libsan 

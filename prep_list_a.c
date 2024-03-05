@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:36:05 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 14:43:36 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/05 14:32:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,9 @@ void	calc_push_cost(t_list *lst_a, t_list *lst_b)
 		lst_a = lst_a->next;
 	}
 }
-/*checks sum of push costs of node + target node, node with
-   smallest value is given out by temp and it's bool "cheapest" is set to true*/
+/*  checks push costs of nodes in lst_a and identifies 
+	smallest value. This node's bool "cheapest"
+	is set to true */
 
 void	find_cheapest(t_list *lst_a)
 {
