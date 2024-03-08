@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:14:45 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/05 13:22:25 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/08 12:21:33 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int ac, char *av[])
 		i--;
 	}
 	if (!ft_check_input(av, i))
-		return (ft_perror());
+		perror_free_exit(&stack_a, &stack_b, i, av);
 	stack_a = fill_stack_a(av, i, &stack_a);
 	if (is_sorted(stack_a))
 		return (free_stacks(&stack_a, &stack_b));

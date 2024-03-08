@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 15:18:06 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/07 10:21:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_list
 	struct s_list	*target_node;
 }					t_list;
 
-void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *new_node);
 t_list		*ft_lstlast(t_list *lst);
 void		swap_a(t_list **lst);
 void		swap_b(t_list **lst);

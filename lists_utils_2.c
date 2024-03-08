@@ -6,27 +6,27 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:17:56 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 14:31:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/07 10:21:23 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
 	t_list	*temp;
 
-	if (!lst || !new)
+	if (!lst || !new_node)
 		return ;
 	if (!(*lst))
 	{
-		*lst = new;
+		*lst = new_node;
 		return ;
 	}
 	temp = *lst;
 	while (temp -> next)
 		temp = temp -> next;
-	temp -> next = new;
+	temp -> next = new_node;
 }
 
 t_list	*ft_lstlast(t_list *lst)
