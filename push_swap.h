@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:08 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/07 10:21:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/14 11:00:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int			is_sign(char c);
 int			ft_isdigit_ps(char c);
 int			nbr_is_dupl(char **av, int i);
 void		ft_putstr(char *s);
-int			main(int ac, char *av[]);
 
 typedef struct s_list
 {

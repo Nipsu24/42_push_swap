@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:15:14 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 15:15:21 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/03/14 11:01:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,6 @@ int	ft_check_input(char **av, int i)
 	if (!in_range(av, j))
 		return (0);
 	return (1);
-}
-
-int	check_space(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == ' ')
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int	in_range(char **av, int i)
