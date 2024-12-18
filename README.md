@@ -15,123 +15,57 @@
 </h2>
 
 ## About
-The repository contains a program with a sorting algorithm which sorts data on a stack. The aim is to achieve the smallest number of moves for sorting
+The repository contains a program with a sorting algorithm which sorts data of a stack. The aim is to achieve the smallest number of moves for sorting
 the respective numbers of the stack (given as arguments to the program) whereby the sorting instruction are limited by the subject. The project introduced
 oneself to the concept of **single linked lists** in c programming and different sorting algorithms.
 
 ## Program
 The code of the push_swap program makes use of the several modificaton possibilities of single linked lists in order to sort the stack of numbers.
 The executable takes an undefined amount of arguments which have to be whole numbers (both positive and negative possible), each number in the range
-of min - max int. 
+of min - max int. There are 2 stacks A and B, and the following instructions are allowed to be used in the algorithm:
+ - swap a (sa) / swap b (sb)
+ - swap a and b (ss)
+ - push a (pa) / push b (pb)
+ - rotate a (ra) / rotate b (rb)
+ - rotate a and b (rr)
+ - reverse rotate a (rra) / reverse rotate b (rrb)
+ - reverse rotate a and b (rrr)
+   
+The algorithm makes use of several established sorting algorithm aspects such as partitioning (merge sort), insertion into sorted order (insertion sort),
+cost minimization (greedy approach) and final integration (merge sort).
+First, 2 numbers are pushed from A to B. Afterwards each number in A is assessed on its cost, that means how many instructions are needed to bring it into
+the right position of stack B, whereby this stack is sorted in descending order. The number with the lowest costs is pushed from A to B and the calculations
+start again for the remaining numbers in stack A, until 3 numbers remain. These in turn are sorted with a simple function before the sorted numbers of B are
+pushed back to A (A rotates max number to top for ensuring correct order of numbers) and if needed, a final rotation is conducted in order to have the smallest
+number on top of the stack.
 
 ## Requirements
 -`gcc` compiler
-with `<fcntl.h>` and `<stdio.h>` 
 
 ## Instructions
 
 ### 1. Compiling the program
 
-To compile a program with the function, create a main.c file (see example in 2.)  within the repo folder and run:
+To compile the program, navigate into the repo folder and run:
 
 ```
-$ gcc get_next_line.c get_next_line_utils.c main.c 
+$ make 
 ```
 
-### 2. Using it in your code (basic example)
+### 2. Run the program
 
-To use the function, include the header path in your main.c file (given all files are in the same folder):
+Run the program by passing x amount of arguments (duplicates are forbidden), e.g.
 ```
-#include "get_next_line.h"
+$ ./push_swap 5 2 8 10 1 4
 ```
-Also include a file (e.g. test.txt) with some content in the folder.
-Example of main.c (reads first 10 lines of the given test.txt file):
-```
-int	main(void)
-{
-	int		fd;
-	char	*line;
-	int		i;
+The output shows the abbrivations of the needed instructions for sorting the stack.
 
-	i = 0;
-	fd = open("test.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return (1);
-	}
-	while (i < 10)
-	{
-		line = get_next_line(fd);
-		printf("%s", line);
-		free(line);
-		i++;
-	}
-	close(fd);
-	return (0);
-}
+### 3. Usage of checker file
+The repo contains a file which is able to check whether the allowed amount of instructions
+for sorting a given set of numbers is met. It either outputs **ok** or **ko** and can be used as follows:
 ```
-Another main.c example for reading straight from the stdin of the terminal:
+$ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
 ```
-int	main(void)
-{
-	char	*line;
-	int		i;
 
-	i = 0;
-	while (i < 10)
-	{
-		line = get_next_line(STDIN_FILENO);
-		printf("%s", line);
-		free(line);
-		i++;
-	}
-	return (0);
-}
-```
-### 3. Bonus Part
-Bonus files are to be compiled in the same way as the basic files described above. The header
-needs to be changed to:
-```
-#include "get_next_line_bonus.h"
-```
-This version of the get_next_line function is able to process multiple filedescriptors at once.
-A respective main.c file could look as follows:
-```
-#include <fcntl.h> 
-#include <stdio.h> 
-#include "get_next_line_bonus.h"
-
-int	main(void)
-{
-	int		fd;
-	int		fd2;
-	char	*line;
-	char	*line2;
-	int		i;
-
-	i = 0;
-	fd = open("test.txt", O_RDONLY);
-	fd2 = open("test_2.txt", O_RDONLY);
-	if (fd < 0 && fd2 < 0)
-	{
-		perror("Error opening file");
-		return (1);
-	}
-	while (i < 10)
-	{
-		line = get_next_line(fd);
-		line2 = get_next_line(fd2);
-		printf("%s", line);
-		printf("%s", line2);
-		free(line);
-		free(line2);
-		i++;
-	}
-	close(fd);
-	close(fd2);
-	return (0);
-}
-```
 ## Testing
 This library has been tested with [Francinette](https://github.com/xicodomingues/francinette).
