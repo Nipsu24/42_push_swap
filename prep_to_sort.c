@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:35:54 by mmeier            #+#    #+#             */
-/*   Updated: 2024/03/01 15:26:57 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/12/18 11:39:17 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ void	sort_three(t_list **lst_a)
 	t_list	*high;
 	t_list	*low;
 	t_list	*last;
-	t_list	*first;
 
 	high = highest(*lst_a);
 	low = lowest(*lst_a);
 	last = ft_lstlast(*lst_a);
-	first = *lst_a;
 	if (high == *lst_a && low == last)
 	{
 		rotate_a(lst_a);

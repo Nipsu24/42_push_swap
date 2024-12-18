@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:06:00 by mmeier            #+#    #+#             */
-/*   Updated: 2023/12/11 10:16:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/12/18 11:42:20 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 
 	i = 0;
-	if (s1 == '\0' || set == '\0')
+	if (!s1 || !set)
 		return (0);
 	len = ft_strlen(s1);
 	while (s1[i] && ft_strchr(set, s1[i]))
