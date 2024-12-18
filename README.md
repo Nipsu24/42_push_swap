@@ -10,8 +10,6 @@
 	<a href="#requirements">Requirements</a>
 	<span> · </span>
 	<a href="#instructions">Instructions</a>
-  <span> · </span>
-	<a href="#testing">Testing</a>
 </h2>
 
 ## About
@@ -66,6 +64,3 @@ for sorting a given set of numbers is met. It either outputs **ok** or **ko** an
 ```
 $ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
 ```
-
-## Testing
-This library has been tested with [Francinette](https://github.com/xicodomingues/francinette).
